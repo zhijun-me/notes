@@ -81,7 +81,7 @@ public class User {
 
 - mybatis-3.4.5.jar
 - mysql-connector-java-5.1.47.jar  (mysql 驱动)
-- log4j-1.2.17.jar  （日志，可以换成其它的）
+- log4j-1.2.17.jar  （日志，可以换成其它的, `logImpl` 换成 `JDK_LOGGING` 可以不引入 `log4j`）  
 
 ### 1.4 加入配置文件
 
