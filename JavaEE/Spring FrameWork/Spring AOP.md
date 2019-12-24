@@ -193,3 +193,33 @@ public  修饰符可以不加，但是如果不是public，那要怎么访问???
 
 不固定的都可以使用 * 来代替，参数使用 ..
 
+### 1.7 Spring中通知类型
+
+1. 前置通知
+
+	 在目标类的目标方法之前执行 `<aop:before />`
+
+2. 后置通知
+
+	 在目标类的目标方法之后执行，如果有异常则不会执行  `<aop:after-returning />`
+
+3. 环绕通知
+
+	目标类的目标方法执行前后都会执行。 `<aop:around />` 
+
+	环绕通知 使用时，对应的通知方法，需要加一个参数 `ProceedingJoinPoint pdj`
+
+	  然后在代码中调用    `pdj.proceed()` 来调用原来的方法。
+
+4. 异常通知
+
+	在抛出异常时执行该通知，用于包装异常， `<aop:after-throwing>`
+
+5. 后置通知(最终通知)
+
+	在目标方法执行之后执行，有异常也会执行， 可以会用来释放资源`<aop:after >`
+
+除 around 之外的通知，都可以有一个 JoinPoint参数 。
+
+JoinPoint对象可以有两个方法： 一个是 getTarget  获取代理目标对象 target，注意 是aspectJ 下面的包，不是aop联盟下的包。另一个是 getSignature().getName()  可以获取到被代理的方法名。
+
