@@ -241,3 +241,22 @@ public class CollectionBean {
     </map>
 </property>
 ```
+
+## 9. 在ApplicationContext.xml 中引入 配置文件 ( *.properties )
+
+```xml
+<context:property-placeholder location="classpath:db.properties"/>
+```
+
+然后可以使用 **${}** 获取里面的值
+
+这里的classpath 指的是 src下的根目录，即编译后的 classes 。 `classpath：`只会到你的class路径中查找文件; `classpath*：`不仅包含class路径，还包括jar文件中(class路径)进行查找，会从所有的`calsspath`中加载。当项目中有多个`classpath`路径，并同时加载多个`classpath`路径下的文件，*就发挥了作用，如果不加*，则表示仅仅加载第一个`classpath`路径。
+
+在多个`classpath`中存在同名资源，都需要加载，  那么用`classpath:`只会加载第一个，这种情况下也需要用`classpath*:`前缀
+
+**注意**：用`classpath*:`需要遍历所有的`classpath`，所以加载速度是很慢的，因此，在规划的时候，应该尽可能规划好资源文件所在的路径，尽量避免使用 `classpath*``
+
+``**/`:表示任意目录；
+
+`**/applicationContext-*.xml`：表示任意目录下的以`applicationContext-`开头的XML文件。
+
