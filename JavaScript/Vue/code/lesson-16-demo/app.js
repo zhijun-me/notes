@@ -1,0 +1,19 @@
+var vm = new Vue({
+	el:'#vue-app',
+	data:{
+		health:100,
+		enable:true
+	},
+	methods:{
+		punch(){
+			this.health-=10;
+			if(this.health<=0){
+				this.enable=false;
+			}
+		},
+		reset(){
+			this.enable=true;
+			this.health=100;
+		}
+	}
+});

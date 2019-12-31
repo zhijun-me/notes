@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>lesson-2</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
+	</head>
+	<body>
+		<div id="vue-app">
+			<button @click="changeIf()">v-if</button>
+			<button @click="changeShow()">v-show</button>
+			
+			<p v-if="if_sts"> v-if </p>
+			<p v-if="show_sts">
+				v-show
+			</p>
+		</div>
+		
+	<script src="app.js"></script>	
+	</body>
+	
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>敲打杯子</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+	</head>
+	<body>
+		<div id="vue-app">
+			<!-- bag-image -->
+			<div id="bag" v-bind:class="{burst:!enable}">
+				
+			</div>
+
+			<!-- bag  health -->
+			<div id="bag-health">
+				<div v-bind:style="{width:health+'%'}"></div>
+			</div>
+
+			<div id="controlls">
+				<button type="button" @click="punch" v-show="enable" >敲打</button>
+				<button type="button" @click="reset" >重置</button>
+			</div>
+
+		</div>
+		<script src="app.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

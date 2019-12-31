@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>lesson-2</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+	</head>
+	<body>
+		<div id="vue-app">
+			<ul>
+				<li v-for="(a,i) in ary">
+					{{i}}+': '+{{a}}
+				</li>
+
+			</ul>
+			<br />
+			<hr />
+			<template v-for="(a,i) in ary">
+				{{i}}+': '+{{a}}
+			</template>
+
+			<hr />
+			<h2>遍历对象 </h2>
+			<div>
+				<p v-for="(user,index) in users">
+					{{user}} -- {{index}}
+				</p>
+
+				<hr>
+				<template v-for="(user,index) in users ">
+
+					<p v-for="(val,key) in user">
+						{{index}} : {{key}} --- {{val}}
+
+					</p>
+				</template>
+			</div>
+
+		</div>
+
+		<script src="app.js"></script>
+	</body>
+
+</html>

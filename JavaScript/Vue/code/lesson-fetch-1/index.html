@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>lesson-2</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="styles.css" /> -->
+</head>
+
+<body>
+	<h1>fetch请求</h1>
+	<div id="vue-app">
+
+		<div>
+			<input type="text" v-model="todo.title">
+			<input type="checkbox" v-model="todo.completed">
+			<input type="button" value="提交" v-on:click="submit">
+		</div>
+
+		<hr />
+
+		<li v-for="todo in todos ">
+			{{todo.title}}
+			<span v-if="todo.completed">{{todo.completed}}</span>
+			<!-- <span v-show="todo.completed">{{todo.completed}}</span> -->
+		</li>
+
+
+
+	</div>
+	<script src="app.js"></script>
+</body>
+
+</html>
