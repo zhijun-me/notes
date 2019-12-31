@@ -37,7 +37,7 @@ spring-tx-5.1.2.RELEASE.jar
 ```
 c3p0-0.9.5.2.jar
 mchange-commons-java-0.2.15.jar
-commons-logging-1.2.jar
+mysql-connector-java-5.1.45.jar
 ```
 
 最后是Junit的包:(可选)
@@ -46,4 +46,10 @@ commons-logging-1.2.jar
 hamcrest-core-1.3.jar
 junit-4.12.jar
 ```
+
+
+
+插入、添加
+
+
 

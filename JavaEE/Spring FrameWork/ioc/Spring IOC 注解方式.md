@@ -161,3 +161,40 @@ public void test2(){
 
 @Resource 是JDK 提供的一个注解，Spring 支持，这个注解，可以代替 Autowired使用，而且， 可以指定name，无需配合 Qualifier   注解。即使加上，也不会生效的。
 
+### 2.6 @PropertySource
+
+@PropertySource 注解，可以将 配置文件注入:
+
+```properties
+# db.properties
+jdbc.driver=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://127.0.0.1:3306/demo
+jdbc.user=root
+jdbc.password=123456
+```
+
+```java
+@Component
+@PropertySource("db.properties")
+public class DataSouceConfig {
+    @Value("${jdbc.driver}")
+    private String jdbcDriver;
+    @Value("${jdbc.url}")
+    private String jdbcUrl;
+    @Value("${jdbc.user}")
+    private String jdbcUser;
+    @Value("${jdbc.password}")
+    private String jdbcPassword;
+
+    @Bean
+    DataSource dataSource() throws PropertyVetoException {
+        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+        dataSource.setDriverClass(jdbcDriver);
+        dataSource.setJdbcUrl(jdbcUrl);
+        dataSource.setUser(jdbcUser);
+        dataSource.setPassword(jdbcPassword);
+        return dataSource;
+    }
+}
+```
+
