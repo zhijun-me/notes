@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <context:component-scan base-package="xyz.zhongzj.domain" />
+    <context:component-scan base-package="xyz.zhongzj" />
     
 </beans>
 ```
