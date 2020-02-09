@@ -18,7 +18,9 @@ https://nodejs.org/zh-cn/download/
 
    添加 C:\soft\nodejs\ 到 path
 
-   添加 C:\soft\nodejs\node-global 到 path
+   添加 C:\soft\nodejs\node-global\ 到 path
+
+   > 2020-1-22 17:20:17 node-global\ 最后少加了\ 一直找不到cnpm
 
 4. 将上面新建的目录配置到nodejs
 

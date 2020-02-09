@@ -1,30 +1,77 @@
 # Spring-framework
 
-## 1. Spring架构图
+[toc]
 
-![image-20191220215227773](../Spring FrameWork/Sprin FrameWork.assets/image-20191220220113079.png)
+# 1. Spring 介绍
 
-## 2. IOC
+## 1.1  Spring架构图
 
- 控制反转（Inversion of Control，缩写为*IoC*） 
+常说的Spring指的是Spring FrameWork
 
- ## 3.DI
+![image-20191220220113079](Spring FrameWork.assets/image-20191220220113079.png)
 
-Dependency Injection  依赖注入
+## 1.2 Spring核心概念介绍
 
+### 1.2.1  IOC
 
+ 控制反转（Inversion of Control，缩写为*IoC*） 。对象创建权利由程序反转给Spring容器
 
-## 4. Spring 容器
+ ### 1.2.2.DI
+
+Dependency Injection  依赖注入 。 Spring容器创建Bean对象时，动态的将依赖对象注入到bean的组件中。
+
+### 1.2.3 	AOP
+
+Aspect Oriented Programming  面向切面编程。 在不修改目标对象源码的情况下，增强IOC容器中，bean的功能
+
+### 1.2.4 Spring容器
+
+Spring 容器指的就是ioc容器，底层也就是一个BeanFactory
 
 - BeanFactory (已经过时,是一个顶层接口，功能比较简单)
+- ApplicationContenxt （用这个）
 
--  ApplicationContenxt （用这个）
+# 2. 基于XML配置的使用
 
-	
+## 2.1 IOC 配置
+
+在 Spring 的xml中，通过一个bean标签完成ioc的配置。
+
+###  2.1.1 bean 标签
+
+用于配置被Spring容器管理的bean的信息。 如果没有指定constructor-arg ，则使用默认的无参构造。
+
+#### 2.1.1.1 id  
+
+唯一标识，可以用于获取对象
+
+#### 2.1.1.2 class 
+
+  完整类名，用于使用反射创建对象，默认情况下，使用无参构造，可以配合 constructor-arg ，来调用指定的构造方法
+
+#### 2.1.1.3 init-method 
+
+指定类的初始化方法
+
+#### 2.1.1.4 destroy-method 
+
+​	指定类的销毁方法。比如DataSource的配置中，一般要指定 `destroy-method="close"`
+
+#### 2.1.1.5 scope 
+
+ 指定对象的生存周期,有个对应的注解 `@Scope`。
+
+**singleton**   单例模式从容器启动到第一次被请求而实例化开始 ， 只要容器不销毁或退出，该类型的bean的单一实例就会一直存活.
+
+**prototype**   Spring容器会 每次都重新生成一个新的对象给请求方 ，并不会保留这个对象的引用。
+
+**request **    request，session和global session类型只实用于web程序，通常是和XmlWebApplicationContext共同使用。  Spring容器会为每个HTTP请求创建一个全新的RequestPrecessor对象，当请求结束后，该对象的生命周期即告结束，**如同java web中request的生命周期**
+
+**session**  对于web应用来说，放到session中最普遍的就是用户的登录信息 ，Spring容器会为每个独立的session创建属于自己的全新的UserPreferences实例，比request scope的bean会存活更长的时间，其他的方面没区别，**如同java web中session的生命周期**。
+
+**global session**  global session只有应用在基于porlet的web应用程序中才有意义，它映射到porlet的global范围的session，如果普通的servlet的web 应用中使用了这个scope，容器会把它作为普通的session的scope对待。 
 
 ## 5. Spring创建对象的方式
-
-**使用bean标签创建对象的时候，如果没有指定constructor-arg ，则使用默认的无参构造。**
 
 ### 5.1默认使用无参构造 (通常)
 
@@ -65,29 +112,7 @@ public class UserFactory {
 <bean name="user2" factory-bean="userFactory" factory-method="createUser2" scope="prototype"/>
 ```
 
-### 5.4 scope 详解
-
-scope定义对象的生存周期。可以配合bean标签使用，有个对应的注解 `@Scope`
-
-#### **singleton**
-
-单例模式 从容器启动到第一次被请求而实例化开始 ， 只要容器不销毁或退出，该类型的bean的单一实例就会一直存活
-
-#### **prototype**
-
-Spring容器会 每次都重新生成一个新的对象给请求方 ，并不会保留这个对象的引用。
-
-#### **request **
-
-request，session和global session类型只实用于web程序，通常是和XmlWebApplicationContext共同使用。  Spring容器会为每个HTTP请求创建一个全新的RequestPrecessor对象，当请求结束后，该对象的生命周期即告结束，**如同java web中request的生命周期**
-
-#### **session**
-
-对于web应用来说，放到session中最普遍的就是用户的登录信息 ，Spring容器会为每个独立的session创建属于自己的全新的UserPreferences实例，比request scope的bean会存活更长的时间，其他的方面没区别，**如同java web中session的生命周期**。
-
-#### **global session**
-
- global session只有应用在基于porlet的web应用程序中才有意义，它映射到porlet的global范围的session，如果普通的servlet的web 应用中使用了这个scope，容器会把它作为普通的session的scope对待。 
+#### 
 
 ## 6. 在Spring配置文件中引入其它路径的Spring配置文件
 

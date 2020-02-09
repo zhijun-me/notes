@@ -1,0 +1,52 @@
+{
+	"kbd":{
+		"prefix": "kbd",
+		"body": "<kbd>$1</kbd>",
+		"description": "键盘文字"
+	},
+	"br":{
+		"prefix": "br",
+		"body": "<br/>",
+		"description": "换行"
+	},
+	"code-markdown":{
+		"prefix": "```md",
+		"body": [
+			"```markdown",
+			"$1",
+			"",
+			"```"
+		],
+		"description": "markdown 中的 markdown 代码块"
+	},
+	"code-javascript":{
+		"prefix": "```js",
+		"body": [
+			"```javascript",
+			"$1",
+			"",
+			"```"
+		],
+		"description": "markdown 中 JavaScript 代码块"
+	},
+	"code-java":{
+		"prefix": "```java",
+		"body": [
+			"```java",
+			"$1",
+			"",
+			"```"
+		],
+		"description": "markdown 中 Java 代码块"
+	},
+	"code-xml":{
+		"prefix": "```xml",
+		"body": [
+			"```xml",
+			"$1",
+			"",
+			"```"
+		],
+		"description": "markdown 中 xml 代码块"
+	}
+}

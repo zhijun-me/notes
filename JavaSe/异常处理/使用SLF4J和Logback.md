@@ -26,6 +26,15 @@ logger.info("Set score {} for Person {} ok.", score, p.getName());
 
 slf4j 需要引入 `slf4j-api-1.7.24.jar` 作为核心包
 
+```xml
+<!-- slf4j -->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.26</version>
+</dependency>
+```
+
 ### 使用
 
 ```java
@@ -58,6 +67,37 @@ log.warn("end.");
 - slf4j-api-1.7.24.jar
 - com.lmax.disruptor   (log4j2的异步日志功能包 ,可不要)
 - log4j-web  (解决web项目log4j可能出现警告的jar包 ，可不要)
+
+```xml
+<!-- slf4j -->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.26</version>
+</dependency>
+
+<!--  log4j-2.3  -->
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>2.3</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+    <version>2.3</version>
+</dependency>
+
+<!--   log4j2.x  sl4j 实现   -->
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-slf4j-impl</artifactId>
+    <version>2.3</version>
+</dependency>
+<!--  log4j-2.3  -->
+```
+
+
 
 使用:
 
