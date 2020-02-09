@@ -1,6 +1,6 @@
 # Spring JDBC
 
-jar包 依赖:
+##  1. jar包 依赖:
 
 第一部分是Spring 核心包 :
 
@@ -49,9 +49,7 @@ junit-4.12.jar
 
 
 
-
-
-##  jdbcTemplate
+## 2. 使用 jdbcTemplate
 
 Spring jdbc 通过 jdbcTemplate 来实现jdbc操作。
 
@@ -88,7 +86,7 @@ public class DataSouceConfig {
 
 jdbcTemplate  的主要使用方法：
 
-​     int **update**(String sql, Object... args)     执行新装、修改、删除等更新语句
+​     int **update**(String sql, Object... args)     执行新增、修改、删除等更新语句
 
 ​     T **queryForObject**(String sql, Class<T> requiredType,Object ...args)    执行SQL，并返回指定类型的值
 
@@ -102,7 +100,7 @@ jdbcTemplate  的主要使用方法：
 User user= jdbcTemplate.queryForObject(sql, new RowMapper<User>() {
     @Override
     public User mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        return rsToUser(resultSet,index);
+        return rsToUser(resultSet,rowNum);
     }
 });
 
@@ -124,17 +122,11 @@ int **update**(String sql,Object... args)  执行update语句
 
  void **execute**(final String sql)； //可以执行任意SQL(比如DDL语句)，不过**没有返回值**
 
-
-
 下面两个没看出来怎么用，后面的参数是回调函数。
 
 jdbcTemplate.execute(sql, (PreparedStatementCallback<Object>) preparedStatement -> null);
 
 jdbcTemplate.execute(sql, (CallableStatementCallback<Object>) callableStatement -> null);
-
-
-
-
 
 **详细使用实例如下：**
 
@@ -223,5 +215,23 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 }
+```
+
+**使用 名称参数:**
+
+```java
+@Bean
+NamedParameterJdbcTemplate namedParameterJdbcTemplate(DataSource dataSource){
+    return  new NamedParameterJdbcTemplate(dataSource);
+}
+
+@Resource
+private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+
+String sql="select count(*) from tb_user where id = :id";
+SqlParameterSource sqlParameterSource = new MapSqlParameterSource().addValue("id",2);
+Integer value = namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, Integer.class);
+System.out.println(value);
 ```
 
