@@ -91,3 +91,7 @@ Web --> Jsp files
 
 ![image-20191212125308057](eclipse.assets/image-20191212125308057.png)
 
+### 2. 迁移eclipse个人配置
+
+ 将`eclipse`的`workspace`目录下的 `.metadata/.plugins/org.eclipse.core.runtime/.settings/`目录 
+复制到新的workspace下 
