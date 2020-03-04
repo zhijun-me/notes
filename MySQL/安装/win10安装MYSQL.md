@@ -1,8 +1,18 @@
-# MYSQL 安装
+# win10 安装MYSQL
 
-## 2. 安装MYSQL
+## 环境
 
-my.ini 文件
+**操作系统:** Windows 10
+
+**MySQL版本**: 5.7.20 解压版
+
+**安装目录：** H:/soft/mysql
+
+
+
+##  安装MYSQL
+
+**my.ini 文件**
 
 ```ini
 # 创建 my.ini 文件
@@ -43,3 +53,4 @@ net start MySQL5.7
 mysql -u root -p 
 set password for root@localhost =password('123456'); 
 ```
+
